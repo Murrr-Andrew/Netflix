@@ -4,7 +4,6 @@ from django.views.generic import ListView
 from .models import Movie
 
 
-class MoviesView(ListView):
+class MovieListView(ListView):
     model = Movie
-    template = 'movies/movies_view_list.html'
-
+    template = 'movies/movie_list.html'
