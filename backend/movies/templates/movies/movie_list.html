@@ -281,7 +281,7 @@
                                 </div>
                                 <div class="item-info-product">
                                     <h4 class="">
-                                        <a href="{% url 'detail' movie.slug %}" class="editContent">
+                                        <a href="{{ movie.get_absolute_url }}" class="editContent">
                                             {{ movie.title }}
                                         </a>
                                     </h4>

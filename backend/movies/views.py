@@ -7,6 +7,9 @@ class MovieListView(ListView):
     model = Movie
     template = 'movies/movie_list.html'
 
+    def get_queryset(self):
+        return Movie.objects.filter(draft=False)
+
 
 class MovieDetailView(DetailView):
     model = Movie
