@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Clack Website Template</title>
+    <title>{% block title %}Netflix{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,15 +17,14 @@
 <body>
 <div id="page" class="page">
     {% include 'inc/_header.html' %}
+    {% include 'inc/_breadcrumb.html' %}
     <section class="ab-info-main py-md-5 py-4 editContent" style="padding-left: 3rem; padding-right: 3rem;">
-        {% block container %}
         <div class="container-fluid py-md-3">
             <div class="row">
                 {% include 'inc/_sidebar.html' %}
                 {% block content %}{% endblock %}
             </div>
         </div>
-        {% endblock %}
     </section>
     {% include 'inc/_footer.html' %}
 </div>
