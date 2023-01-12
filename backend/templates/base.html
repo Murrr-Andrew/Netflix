@@ -18,12 +18,14 @@
 <div id="page" class="page">
     {% include 'inc/_header.html' %}
     <section class="ab-info-main py-md-5 py-4 editContent" style="padding-left: 3rem; padding-right: 3rem;">
+        {% block container %}
         <div class="container-fluid py-md-3">
             <div class="row">
                 {% include 'inc/_sidebar.html' %}
                 {% block content %}{% endblock %}
             </div>
         </div>
+        {% endblock %}
     </section>
     {% include 'inc/_footer.html' %}
 </div>
