@@ -1,6 +1,8 @@
-from django.views.generic import ListView, DetailView
+from django.shortcuts import redirect
+from django.views.generic import ListView, DetailView, View, CreateView
 
-from .models import Movie
+from .models import Movie, Reviews
+from .forms import ReviewForm
 
 
 class MovieListView(ListView):
@@ -12,3 +14,20 @@ class MovieListView(ListView):
 
 class MovieDetailView(DetailView):
     model = Movie
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = ReviewForm()
+        return context
+
+
+class ReviewCreateView(View):
+    def post(self, request, pk):
+        form = ReviewForm(request.POST)
+        movie = Movie.objects.get(pk=pk)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.movie = movie
+            form.save()
+
+        return redirect(movie.get_absolute_url())
