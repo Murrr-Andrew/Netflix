@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}{{ object.title }}{% endblock %}
 
 {% block content %}
@@ -114,23 +116,29 @@
     <hr>
     <div class="row">
         <div class="single-form-left">
-            <!-- contact form grid -->
             <div class="contact-single">
                 <h3 class="editContent">
-                    <span class="sub-tittle editContent">02</span>Оставить отзыв</h3>
-                    {% include './review_form.html' %}
+                    <span class="sub-tittle editContent">02</span>Оставить отзыв
+                </h3>
+                {% include './review_form.html' %}
             </div>
-            <!--  //contact form grid ends here -->
         </div>
         {% for review in object.reviews_set.all %}
         <div class="media py-5">
-            <img src="bundles/images/te2.jpg" class="mr-3 img-fluid" alt="image">
+            <img src="{% static 'images/te2.jpg' %}" class="mr-3 img-fluid" alt="image">
             <div class="media-body mt-4">
                 <h5 class="mt-0 editContent">{{ review.name }}</h5>
                 <p class="mt-2 editContent">{{ review.text }}</p>
+                <a href="#fromReview" onclick="addReview('{{ review.name }}', '{{ review.id }}')">Replay</a>
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
+<script>
+    function addReview(name, id) {
+        document.getElementById("parent").value = id;
+        document.getElementById("contactcomment").innerText = `${name}, `;
+    }
+</script>
 {% endblock %}

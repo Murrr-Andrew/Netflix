@@ -1,10 +1,9 @@
-<form action="{% url 'add_review' object.id %}" method="POST" class="mt-4">
+<form action="{% url 'add_review' object.id %}" method="POST" class="mt-4" id="formReview">
     {% csrf_token %}
-
+    <input type="hidden" name="parent" value="" id="parent">
     <div class="form-group editContent">
         <label for="contactcomment" class="editContent">Ваш комментарий*</label>
-        <textarea class="form-control border" rows="5" id="contactcomment" required=""
-                  name="text"></textarea>
+        <textarea class="form-control border" rows="5" id="contactcomment" required="" name="text"></textarea>
     </div>
     <div class="d-sm-flex">
         <div class="col-sm-6 form-group p-0 editContent">
