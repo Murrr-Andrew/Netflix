@@ -105,12 +105,12 @@
         <div class="single-form-left">
             <div class="contact-single">
                 <h3>
-                    <span class="sub-tittle">02</span>Оставить отзыв
+                    <span class="sub-tittle">{{ object.reviews_set.count }}</span>Оставить отзыв
                 </h3>
                 {% include './review_form.html' %}
             </div>
         </div>
-        {% for review in object.reviews_set.all %}
+        {% for review in object.get_review %}
         <div class="media py-5">
             <img src="{% static 'images/te2.jpg' %}" class="mr-3 img-fluid" alt="image">
             <div class="media-body mt-4">
