@@ -53,8 +53,24 @@ class ReviewsAdmin(admin.ModelAdmin):
     readonly_fields = ('name', 'email')
 
 
-admin.site.register(Genre)
-admin.site.register(MovieShots)
-admin.site.register(Actor)
-admin.site.register(Rating)
+@admin.register(Genre)
+class GenreAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug')
+
+
+@admin.register(Actor)
+class ActorAdmin(admin.ModelAdmin):
+    list_display = ('name', 'age')
+
+
+@admin.register(Rating)
+class RatingAdmin(admin.ModelAdmin):
+    list_display = ('movie', 'ip')
+
+
+@admin.register(MovieShots)
+class MovieShotsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'movie')
+
+
 admin.site.register(RatingStar)
