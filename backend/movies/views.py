@@ -1,7 +1,8 @@
+from django.db.models import Q
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView, View, CreateView
 
-from .models import Movie, Reviews, Category
+from .models import Movie
 from .forms import ReviewForm
 
 
@@ -36,3 +37,17 @@ class ReviewCreateView(View):
             form.save()
 
         return redirect(movie.get_absolute_url())
+
+
+# class JsonFilterMoviewsView(ListView):
+#     def get_queryset(self):
+#         queryset = Movie.objects.filter(
+#             Q(year__in=self.request.GET.getlist('year')) |
+#             Q(genres__in=self.request.GET.getlist('genre'))
+#         ).distinct().values('title', 'tagline', 'url', 'poster')
+#
+#         return queryset
+#
+#     def get(self, request, *args, **kwargs):
+#         queryset = list(self.get_queryset())
+#         return JsonResponse({'movies': queryset}, safe=False)
